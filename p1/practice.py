@@ -8,7 +8,7 @@ def hello_world():
     >>> hello_world()
     'Hello, World!'
     """
-    raise NotImplementedError('Please implement this function for full credit')
+    return "Hello, World!"
 
 
 def sum_unique(l):
@@ -27,7 +27,7 @@ def sum_unique(l):
     >>> sum_unique([2, 2, 2, 2, 1])
     3
     """
-    raise NotImplementedError('Please implement this function for full credit')
+    return sum(set(l))
 
 
 def palindrome(x):
@@ -47,7 +47,13 @@ def palindrome(x):
     >>> palindrome('python')
     False
     """
-    raise NotImplementedError('Please implement this function for full credit')
+    reversedx = str(x)[::-1]
+    if str(x) == reversedx:
+        return True 
+    else:
+        return False
+        
+        
 
 
 def sum_multiples(num):
@@ -66,7 +72,17 @@ def sum_multiples(num):
     >>> sum_multiples(16) # Multiples: [3, 5, 6, 9, 10, 12, 15]
     60
     """
-    raise NotImplementedError('Please implement this function for full credit')
+    outputset = set()
+    
+    for index in range(num):
+        if index*3 < num:
+            outputset.add(index*3)
+            
+    for index in range(num):
+        if index*5 < num:
+            outputset.add(index*5)
+            
+    return sum(outputset)
 
 
 def num_func_mapper(nums, funs):
@@ -84,7 +100,11 @@ def num_func_mapper(nums, funs):
     >>> num_func_mapper(num_list, f_list)
     [11, 15]
     """
-    raise NotImplementedError('Please implement this function for full credit')
+    output = []
+    for function in funs:
+        output.append(function(nums))
+        
+    return output 
 
 
 def pythagorean_triples(n):
@@ -107,7 +127,17 @@ def pythagorean_triples(n):
     >>> pythagorean_triples(20)
     [(3, 4, 5), (6, 8, 10), (5, 12, 13), (9, 12, 15), (8, 15, 17)]
     """
-    raise NotImplementedError('Please implement this function for full credit')
+    triples = []
+    
+    for a in range(1, n):
+        for b in range(a, n):
+            c = (a**2 + b**2)**0.5
+            if c.is_integer() and c < n:
+                triple = tuple(sorted([a, b, int(c)]))
+                if triple not in triples:
+                    triples.append(triple)
+
+    return sorted(triples, key=lambda x: x[2])
     
 def custom_sort(lst):
     """ Use Python's built-in sort function to sort the list so that the odd numbers (in the same order as in the original list) come first, and then the even numbers (also in the same order).
@@ -118,4 +148,11 @@ def custom_sort(lst):
     [(1, 3, 5, 2, 4)]
     (Hint: use a lambda function) 
     """
-    raise NotImplementedError('Please implement this function for full credit')
+    
+    output = []
+    odd = filter(lambda x: x%2 != 0, lst)
+    even = filter(lambda x: x%2 == 0, lst)
+    
+    output.extend(sorted(list(odd)))
+    output.extend(sorted(list(even)))
+    return output
