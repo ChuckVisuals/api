@@ -58,13 +58,15 @@ def update_item():
     pass
 
 # DELETE
-@app.route('/items/<int:corn_id>', methods=['DELETE'])
-def delete_item(corn_id):
-    global corn_field
-    # return 404 if item not found
-
-    # remove item and return 200
-    pass
+# @app.route('/delete_item', methods=['DELETE'])
+# def delete_item():
+    
+#     data = request.get_json()
+#     for m in mock:
+#         if m['game'] is data['game']:
+#             mock.remove(m)
+#             return jsonify(mock), 200
+#     return jsonify(), 404
 
 # Run the app
 if __name__ == '__main__':
